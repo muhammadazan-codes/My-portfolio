@@ -1,7 +1,6 @@
 import Navbar from "./Navbar";
-import StarBg from "./Starbg";
-import { FaGithub, FaFacebook, FaInstagram } from "react-icons/fa";
 
+import { FaGithub, FaFacebook, FaInstagram } from "react-icons/fa";
 
 const stats = [
   {
@@ -22,77 +21,49 @@ const stats = [
   },
 ];
 
-
 const Hero = () => {
   return (
-    <div className="relative min-h-screen w-full overflow-hidden bg-black text-white">
+    <div className="relative min-h-screen w-full overflow-hidden bg-transparent text-white">
 
-      {/* Star Background */}
-      <StarBg />
       <Navbar />
 
       {/* Hero Content */}
-      <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl items-center justify-evenly px-8 mt-[-65px]">
+      <div
+        className="
+          relative z-10 mx-auto flex max-w-7xl flex-col items-center
+          gap-7 px-5 pt-8 pb-10
 
-        {/* Left Side */}
-        <div className="">
+          sm:gap-8 sm:px-8 sm:pt-10 sm:pb-12
 
-          <p className="mb-6 text-sm tracking-widest text-gray-400">
-            FORNTEND DEVELOPER
-          </p>
+          md:gap-10 md:px-10 md:pt-12 md:pb-14
 
-          <h1 className="text-5xl font-bold leading-tight md:text-5xl">
-            Hello, I'm 
-            <span className="text-[#66c61c] ml-4">
-              M.Azan
-            </span>
-          </h1>
+          lg:min-h-screen lg:flex-row lg:justify-evenly
+          lg:gap-0 lg:px-8 lg:pt-0 lg:pb-0
+          lg:mt-[-65px]
+        "
+      >
 
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-gray-400">
-            I build modern, responsive and interactive
-            websites using React <br/> and modern web technologies.
-          </p>
-
-          <div className="mt-8 flex items-center gap-4">
-
-  {/* Hire Me */}
-  <button className="rounded-full border-2 border-[#66c61c] px-7 py-3 text-lg text-[#66c61c] transition hover:bg-[#66c61c] hover:text-black">
-    Hire Me
-  </button>
-
-  {/* Social Icons */}
-  <div className="flex gap-3">
-
-    <button className="flex h-12 w-12 items-center justify-center rounded-full border-2 border-[#66c61c] text-[#66c61c]">
-      <FaGithub size={22} />
-    </button>
-
-    <button className="flex h-12 w-12 items-center justify-center rounded-full border-2 border-[#66c61c] text-[#66c61c]">
-      <FaFacebook size={22} />
-    </button>
-
-    <button className="flex h-12 w-12 items-center justify-center rounded-full border-2 border-[#66c61c] text-[#66c61c]">
-      <FaInstagram size={22} />
-    </button>
-
-  </div>
-
-</div>
-
-        </div>
-
-
-        {/* Right Side */}
-        <div className="flex justify-center">
+        {/* Right Side / Image */}
+        <div className="order-1 flex shrink-0 justify-center lg:order-2">
 
           <div className="relative">
 
             {/* Green Glow */}
-            <div className="absolute inset-0 rounded-full bg-[#66c61c] blur-3xl opacity-60">
-            </div>
+            <div className="absolute inset-0 rounded-full bg-[#66c61c] blur-3xl opacity-40"></div>
 
             {/* Image Circle */}
-            <div className="relative h-80 w-80 overflow-hidden rounded-full border-4 border-[#66c61c] bg-zinc-900">
+            <div
+              className="
+                relative h-60 w-60 overflow-hidden rounded-full
+                border-2 border-[#66c61c] bg-zinc-900
+
+                sm:h-64 sm:w-64
+
+                md:h-72 md:w-72
+
+                lg:h-80 lg:w-80 lg:mr-3
+              "
+            >
 
               {/* Temporary */}
               <div className="flex h-full items-center justify-center text-gray-500">
@@ -105,19 +76,93 @@ const Hero = () => {
 
         </div>
 
+
+        {/* Left Side */}
+        <div className="order-2 w-full max-w-2xl text-center lg:order-1 lg:text-left">
+
+          <p className="mb-3 text-sm tracking-widest text-gray-400 sm:mb-4 md:mb-5">
+            FORNTEND DEVELOPER
+          </p>
+
+          <h1 className="text-3xl font-bold leading-tight sm:text-4xl md:text-5xl">
+            Hello, I'm
+
+            <span className="ml-2 text-[#66c61c] sm:ml-3 md:ml-4">
+              M.Azan
+            </span>
+          </h1>
+
+          <p className="mx-auto mt-4 max-w-xl text-sm leading-7 text-gray-400 sm:mt-5 sm:text-base md:mt-6 md:text-lg md:leading-8 lg:mx-0">
+            I build modern, responsive and interactive
+            websites using React and modern web technologies.
+          </p>
+
+
+          {/* Buttons */}
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-3 sm:mt-7 sm:gap-4 lg:justify-start">
+
+            {/* Hire Me */}
+            <button className="rounded-full border-2 border-[#66c61c] px-6 py-2.5 text-base text-[#66c61c] transition hover:bg-[#66c61c] hover:text-black sm:px-7 sm:py-3 sm:text-lg">
+              Hire Me
+            </button>
+
+
+            {/* Social Icons */}
+            <div className="flex gap-2.5 sm:gap-3">
+
+              <button className="flex h-11 w-11 items-center justify-center rounded-full border-2 border-[#66c61c] text-[#66c61c] sm:h-12 sm:w-12">
+                <FaGithub size={20} />
+              </button>
+
+              <button className="flex h-11 w-11 items-center justify-center rounded-full border-2 border-[#66c61c] text-[#66c61c] sm:h-12 sm:w-12">
+                <FaFacebook size={20} />
+              </button>
+
+              <button className="flex h-11 w-11 items-center justify-center rounded-full border-2 border-[#66c61c] text-[#66c61c] sm:h-12 sm:w-12">
+                <FaInstagram size={20} />
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
       </div>
-     <div className="relative z-10 mx-auto grid max-w-5xl grid-cols-2 gap-8 px-8 pb-10 md:grid-cols-4 -mt-7">
-      {stats.map((stat, index) => (
-      <div className="text-center" key={index}>
-        <h1 className="text-3xl font-bold test-[#66c61c]">
-          {stat.number}
-        </h1>
-        <p className="mt-4 text-gray-400 text-sm">
-          {stat.title}
-        </p>
+
+
+      {/* Stats */}
+      <div
+        className="
+          relative z-10 mx-auto grid max-w-5xl
+          grid-cols-2 gap-5 px-5 pb-8
+
+          sm:gap-6 sm:px-8 sm:pb-10
+
+          md:gap-8 md:px-10 md:pb-10
+
+          lg:mt-[-7px] lg:grid-cols-4 lg:px-8
+        "
+      >
+
+        {stats.map((stat, index) => (
+
+          <div className="text-center" key={index}>
+
+            <h1 className="text-2xl font-bold text-[#66c61c] sm:text-3xl">
+              {stat.number}
+            </h1>
+
+            <p className="mt-2 text-sm text-gray-400 sm:mt-3 md:mt-4">
+              {stat.title}
+            </p>
+
+          </div>
+
+        ))}
+
       </div>
-      ))}
-     </div>
+
     </div>
   );
 };
