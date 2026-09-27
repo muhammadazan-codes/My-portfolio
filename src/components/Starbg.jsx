@@ -8,6 +8,16 @@ const StarBg = () => {
     const mount = mountRef.current;
 
     // -------------------------
+    // Device
+    // -------------------------
+    const isMobile = window.matchMedia(
+      "(max-width: 767px)"
+    ).matches;
+
+    const hasMouse =
+      window.matchMedia("(pointer: fine)").matches;
+
+    // -------------------------
     // Scene
     // -------------------------
     const scene = new THREE.Scene();
@@ -38,7 +48,10 @@ const StarBg = () => {
     );
 
     renderer.setPixelRatio(
-      Math.min(window.devicePixelRatio, 2)
+      Math.min(
+        window.devicePixelRatio,
+        isMobile ? 1.5 : 2
+      )
     );
 
     renderer.domElement.style.display = "block";
@@ -48,22 +61,29 @@ const StarBg = () => {
     mount.appendChild(renderer.domElement);
 
     // -------------------------
+    // Star Settings
+    // -------------------------
+    const starCount = isMobile ? 1000 : 2500;
+    const starSpeed = isMobile ? 0.012 : 0.025;
+    const starSize = isMobile ? 0.7 : 1;
+    const starOpacity = isMobile ? 0.65 : 0.9;
+
+    // -------------------------
     // Stars
     // -------------------------
-    const starCount = 2500;
-
     const positions = new Float32Array(
       starCount * 3
     );
 
-    // Original X/Y positions
-    // These help stars return to their
-    // normal position after cursor moves away
-    const originalX = new Float32Array(starCount);
-    const originalY = new Float32Array(starCount);
+    const originalX = new Float32Array(
+      starCount
+    );
+
+    const originalY = new Float32Array(
+      starCount
+    );
 
     for (let i = 0; i < starCount; i++) {
-
       const x =
         (Math.random() - 0.5) * 100;
 
@@ -83,7 +103,8 @@ const StarBg = () => {
     // -------------------------
     // Geometry
     // -------------------------
-    const geometry = new THREE.BufferGeometry();
+    const geometry =
+      new THREE.BufferGeometry();
 
     geometry.setAttribute(
       "position",
@@ -96,15 +117,14 @@ const StarBg = () => {
     // -------------------------
     // Material
     // -------------------------
-    const material = new THREE.PointsMaterial({
-      color: 0xffffff,
-
-      // Small stars
-      size: 1,
-
-      // Keep stars same size
-      sizeAttenuation: false,
-    });
+    const material =
+      new THREE.PointsMaterial({
+        color: 0xffffff,
+        size: starSize,
+        sizeAttenuation: false,
+        transparent: true,
+        opacity: starOpacity,
+      });
 
     // -------------------------
     // Star Object
@@ -122,21 +142,61 @@ const StarBg = () => {
     let mouseX = 0;
     let mouseY = 0;
 
-    const handleMouseMove = (event) => {
+    // -------------------------
+    // Green Cursor Glow
+    // -------------------------
+    let cursorGlow = null;
 
-      // Convert cursor position
-      // into -1 to +1 range
+    if (hasMouse) {
+      cursorGlow =
+        document.createElement("div");
+
+      cursorGlow.style.position = "absolute";
+      cursorGlow.style.width = "140px";
+      cursorGlow.style.height = "140px";
+      cursorGlow.style.borderRadius = "50%";
+      cursorGlow.style.pointerEvents = "none";
+
+      cursorGlow.style.background =
+        "radial-gradient(circle, rgba(102,198,28,0.16) 0%, rgba(102,198,28,0.07) 35%, transparent 70%)";
+
+      cursorGlow.style.filter =
+        "blur(10px)";
+
+      cursorGlow.style.transform =
+        "translate(-50%, -50%)";
+
+      cursorGlow.style.opacity = "0";
+
+      cursorGlow.style.transition =
+        "opacity 0.2s ease";
+
+      mount.appendChild(cursorGlow);
+    }
+
+    const handleMouseMove = (event) => {
       mouseX =
-        (event.clientX / window.innerWidth) * 2 - 1;
+        (event.clientX /
+          window.innerWidth) *
+          2 -
+        1;
 
       mouseY =
-        -(event.clientY / window.innerHeight) * 2 + 1;
-    };
+        -(event.clientY /
+          window.innerHeight) *
+          2 +
+        1;
 
-    // Only listen for mouse movement
-    // on devices that actually have a mouse
-    const hasMouse =
-      window.matchMedia("(pointer: fine)").matches;
+      if (cursorGlow) {
+        cursorGlow.style.left =
+          `${event.clientX}px`;
+
+        cursorGlow.style.top =
+          `${event.clientY}px`;
+
+        cursorGlow.style.opacity = "1";
+      }
+    };
 
     if (hasMouse) {
       window.addEventListener(
@@ -151,35 +211,32 @@ const StarBg = () => {
     let animationId;
 
     const animate = () => {
-
       const positionArray =
         geometry.attributes.position.array;
 
       for (let i = 0; i < starCount; i++) {
-
         // -------------------------
         // Forward movement
         // -------------------------
-        positionArray[i * 3 + 2] += 0.025;
+        positionArray[i * 3 + 2] +=
+          starSpeed;
 
         // -------------------------
         // Cursor interaction
         // -------------------------
         if (hasMouse) {
-
           const z =
             positionArray[i * 3 + 2];
 
-          // Distance from camera
           const distance =
             camera.position.z - z;
 
-          // Convert cursor position
-          // into approximate world position
           const visibleHeight =
             2 *
             Math.tan(
-              THREE.MathUtils.degToRad(75 / 2)
+              THREE.MathUtils.degToRad(
+                75 / 2
+              )
             ) *
             distance;
 
@@ -188,31 +245,34 @@ const StarBg = () => {
             camera.aspect;
 
           const targetX =
-            mouseX * visibleWidth * 0.5;
+            mouseX *
+            visibleWidth *
+            0.5;
 
           const targetY =
-            mouseY * visibleHeight * 0.5;
+            mouseY *
+            visibleHeight *
+            0.5;
 
           const dx =
-            targetX - positionArray[i * 3];
+            targetX -
+            positionArray[i * 3];
 
           const dy =
-            targetY - positionArray[i * 3 + 1];
+            targetY -
+            positionArray[i * 3 + 1];
 
           const distanceFromCursor =
             Math.sqrt(
               dx * dx + dy * dy
             );
 
-          // Only nearby stars react
           const cursorRadius = 3.5;
 
           if (
-            distanceFromCursor < cursorRadius
+            distanceFromCursor <
+            cursorRadius
           ) {
-
-            // Stronger effect when star
-            // is closer to cursor
             const strength =
               (1 -
                 distanceFromCursor /
@@ -224,10 +284,7 @@ const StarBg = () => {
 
             positionArray[i * 3 + 1] +=
               dy * strength;
-
           } else {
-
-            // Slowly return to original position
             positionArray[i * 3] +=
               (originalX[i] -
                 positionArray[i * 3]) *
@@ -246,7 +303,6 @@ const StarBg = () => {
         if (
           positionArray[i * 3 + 2] > 5
         ) {
-
           const newX =
             (Math.random() - 0.5) * 100;
 
@@ -254,16 +310,19 @@ const StarBg = () => {
             (Math.random() - 0.5) * 100;
 
           positionArray[i * 3] = newX;
-          positionArray[i * 3 + 1] = newY;
+          positionArray[i * 3 + 1] =
+            newY;
 
           originalX[i] = newX;
           originalY[i] = newY;
 
-          positionArray[i * 3 + 2] = -120;
+          positionArray[i * 3 + 2] =
+            -120;
         }
       }
 
-      geometry.attributes.position.needsUpdate = true;
+      geometry.attributes.position.needsUpdate =
+        true;
 
       renderer.render(
         scene,
@@ -280,7 +339,6 @@ const StarBg = () => {
     // Resize
     // -------------------------
     const handleResize = () => {
-
       const width =
         window.innerWidth;
 
@@ -300,7 +358,9 @@ const StarBg = () => {
       renderer.setPixelRatio(
         Math.min(
           window.devicePixelRatio,
-          2
+          window.innerWidth <= 767
+            ? 1.5
+            : 2
         )
       );
     };
@@ -314,7 +374,6 @@ const StarBg = () => {
     // Cleanup
     // -------------------------
     return () => {
-
       cancelAnimationFrame(
         animationId
       );
@@ -335,16 +394,20 @@ const StarBg = () => {
       material.dispose();
       renderer.dispose();
 
+      if (cursorGlow) {
+        cursorGlow.remove();
+      }
+
       if (
         mount &&
-        renderer.domElement.parentNode === mount
+        renderer.domElement.parentNode ===
+          mount
       ) {
         mount.removeChild(
           renderer.domElement
         );
       }
     };
-
   }, []);
 
   return (
