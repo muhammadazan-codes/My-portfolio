@@ -2,6 +2,8 @@ import Navbar from "./Navbar";
 
 import { FaGithub, FaFacebook, FaInstagram } from "react-icons/fa";
 
+import { motion } from "framer-motion";
+
 const stats = [
   {
     number: "+14",
@@ -44,7 +46,23 @@ const Hero = () => {
       >
 
         {/* Right Side / Image */}
-        <div className="order-1 flex shrink-0 justify-center lg:order-2">
+        <motion.div
+          className="order-1 flex shrink-0 justify-center lg:order-2"
+          initial={{
+            opacity: 0,
+            x: 50,
+            scale: 0.9,
+          }}
+          animate={{
+            opacity: 1,
+            x: 0,
+            scale: 1,
+          }}
+          transition={{
+            duration: 0.8,
+            ease: "easeOut",
+          }}
+        >
 
           <div className="relative">
 
@@ -52,33 +70,61 @@ const Hero = () => {
             <div className="absolute inset-0 rounded-full bg-[#66c61c] blur-3xl opacity-40"></div>
 
             {/* Image Circle */}
-            <div
+            <motion.div
               className="
-                relative h-60 w-60 overflow-hidden rounded-full
-                border-2 border-[#66c61c] bg-zinc-900
+                relative flex items-center justify-center
+                h-60 w-60
+                overflow-hidden rounded-full
+                border-2 border-[#66c61c]
 
                 sm:h-64 sm:w-64
-
                 md:h-72 md:w-72
-
                 lg:h-80 lg:w-80 lg:mr-3
               "
+              whileHover={{
+                scale: 1.03,
+              }}
+              transition={{
+                duration: 0.3,
+              }}
             >
 
-              {/* Temporary */}
-              <div className="flex h-full items-center justify-center text-gray-500">
-                Your Image
-              </div>
+              <img
+                src="/image2p.jpeg"
+                alt="M. Azan"
+                loading="eager"
+                fetchPriority="high"
+                className="
+                  h-full w-full
+                  rounded-full
+                  object-cover
+                  object-[center_top]
+                "
+              />
 
-            </div>
+            </motion.div>
 
           </div>
 
-        </div>
+        </motion.div>
 
 
         {/* Left Side */}
-        <div className="order-2 w-full max-w-2xl text-center lg:order-1 lg:text-left">
+        <motion.div
+          className="order-2 w-full max-w-2xl text-center lg:order-1 lg:text-left"
+          initial={{
+            opacity: 0,
+            x: -50,
+          }}
+          animate={{
+            opacity: 1,
+            x: 0,
+          }}
+          transition={{
+            duration: 0.8,
+            ease: "easeOut",
+          }}
+        >
 
           <p className="mb-3 text-sm tracking-widest text-gray-400 sm:mb-4 md:mb-5">
             FORNTEND DEVELOPER
@@ -99,7 +145,22 @@ const Hero = () => {
 
 
           {/* Buttons */}
-          <div className="mt-6 flex flex-wrap items-center justify-center gap-3 sm:mt-7 sm:gap-4 lg:justify-start">
+          <motion.div
+            className="mt-6 flex flex-wrap items-center justify-center gap-3 sm:mt-7 sm:gap-4 lg:justify-start"
+            initial={{
+              opacity: 0,
+              y: 20,
+            }}
+            animate={{
+              opacity: 1,
+              y: 0,
+            }}
+            transition={{
+              delay: 0.4,
+              duration: 0.6,
+              ease: "easeOut",
+            }}
+          >
 
             {/* Hire Me */}
             <button className="rounded-full border-2 border-[#66c61c] px-6 py-2.5 text-base text-[#66c61c] transition hover:bg-[#66c61c] hover:text-black sm:px-7 sm:py-3 sm:text-lg">
@@ -124,15 +185,15 @@ const Hero = () => {
 
             </div>
 
-          </div>
+          </motion.div>
 
-        </div>
+        </motion.div>
 
       </div>
 
 
       {/* Stats */}
-      <div
+      <motion.div
         className="
           relative z-10 mx-auto grid max-w-5xl
           grid-cols-2 gap-5 px-5 pb-8
@@ -143,6 +204,19 @@ const Hero = () => {
 
           lg:mt-[-7px] lg:grid-cols-4 lg:px-8
         "
+        initial={{
+          opacity: 0,
+          y: 25,
+        }}
+        animate={{
+          opacity: 1,
+          y: 0,
+        }}
+        transition={{
+          delay: 0.6,
+          duration: 0.7,
+          ease: "easeOut",
+        }}
       >
 
         {stats.map((stat, index) => (
@@ -161,7 +235,7 @@ const Hero = () => {
 
         ))}
 
-      </div>
+      </motion.div>
 
     </div>
   );

@@ -1,3 +1,6 @@
+import { easeOut, motion } from "framer-motion";
+
+
 const projects = [
   {
     number: "01",
@@ -32,7 +35,12 @@ const Projects = () => {
         lg:px-24 lg:py-24
       "
     >
-      <div className="mx-auto max-w-7xl">
+      <motion.div 
+      initial={{ opacity: 0, y: 25 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.3 }}
+      transition={{duration:0.5, ease:easeOut}}
+      className="mx-auto max-w-7xl">
 
         {/* Heading */}
         <p
@@ -81,13 +89,24 @@ const Projects = () => {
           "
         >
 
-          {projects.map((project) => (
-            <div
+          {projects.map((project,index) => (
+            <motion.div
               key={project.number}
               className="group flex flex-col gap-5 rounded-2xl border border-zinc-800 bg-zinc-950/40 p-5 transition duration-300 hover:border-[#66c61c]
                 sm:gap-6 sm:p-6
                 md:flex-row md:items-center md:p-8
               "
+               initial={{ opacity: 0, y: 25 }}
+               whileInView={{ opacity: 1, y: 0 }}
+               viewport={{ once: true, amount: 0.2 }}
+               transition={{
+               duration: 0.7,
+               delay: index * 0.12,
+               ease: [0.22, 1, 0.36, 1],
+}}
+             
+              
+              
             >
 
               {/* Number */}
@@ -136,12 +155,12 @@ const Projects = () => {
                 ↗
               </div>
 
-            </div>
+            </motion.div>
           ))}
 
         </div>
 
-      </div>
+      </motion.div>
     </section>
   );
 };
