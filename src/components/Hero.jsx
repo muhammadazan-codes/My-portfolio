@@ -6,26 +6,28 @@ import { motion } from "framer-motion";
 
 const stats = [
   {
-    number: "+14",
-    title: "Experience",
+    number: "01",
+    title: "Portfolio",
   },
   {
-    number: "+800",
-    title: "Clients",
+    number: "06",
+    title: "Projects Built",
   },
   {
-    number: "+700",
-    title: "Happy Clients",
+    number: "08+",
+    title: "Core Skills",
   },
   {
-    number: "+900",
-    title: "Projects",
+    number: "02",
+    title: "Live Project",
   },
 ];
 
 const Hero = () => {
   return (
-    <div className="relative min-h-screen w-full overflow-hidden bg-transparent text-white">
+    <div 
+    id="hero"
+    className="relative min-h-screen w-full overflow-hidden bg-transparent text-white">
 
       <Navbar />
 
@@ -90,7 +92,7 @@ const Hero = () => {
             >
 
               <img
-                src="/image2p.jpeg"
+                src="/image1.jpeg"
                 alt="M. Azan"
                 loading="eager"
                 fetchPriority="high"
@@ -98,7 +100,7 @@ const Hero = () => {
                   h-full w-full
                   rounded-full
                   object-cover
-                  object-[center_top]
+                
                 "
               />
 
@@ -127,7 +129,7 @@ const Hero = () => {
         >
 
           <p className="mb-3 text-sm tracking-widest text-gray-400 sm:mb-4 md:mb-5">
-            FORNTEND DEVELOPER
+            FRONTEND DEVELOPER & SOFTWARE ENGINEERING STUDENT
           </p>
 
           <h1 className="text-3xl font-bold leading-tight sm:text-4xl md:text-5xl">
@@ -139,8 +141,7 @@ const Hero = () => {
           </h1>
 
           <p className="mx-auto mt-4 max-w-xl text-sm leading-7 text-gray-400 sm:mt-5 sm:text-base md:mt-6 md:text-lg md:leading-8 lg:mx-0">
-            I build modern, responsive and interactive
-            websites using React and modern web technologies.
+            I'm a Software Engineering student at the University of Malakand <br /> and a passionate Frontend Developer. I build modern, responsive,<br /> and interactive web experiences using React and modern frontend technologies.
           </p>
 
 
