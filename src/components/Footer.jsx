@@ -120,7 +120,7 @@ const Footer = () => {
             <div className="flex gap-2.5 sm:gap-3">
 
               <a
-                href="#"
+                href="https://github.com/muhammadazan-codes/My-portfolio"
                 className="flex h-10 w-10 items-center justify-center rounded-full border border-zinc-700 transition hover:border-[#66c61c] hover:text-[#66c61c]
                   sm:h-11 sm:w-11
                 "
@@ -129,7 +129,7 @@ const Footer = () => {
               </a>
 
               <a
-                href="#"
+                href="https://www.linkedin.com/in/muhammad-azan-3a287043b"
                 className="flex h-10 w-10 items-center justify-center rounded-full border border-zinc-700 transition hover:border-[#66c61c] hover:text-[#66c61c]
                   sm:h-11 sm:w-11
                 "
@@ -138,7 +138,7 @@ const Footer = () => {
               </a>
 
               <a
-                href="#"
+                href="https://www.instagram.com/muhammadazan.web/"
                 className="flex h-10 w-10 items-center justify-center rounded-full border border-zinc-700 transition hover:border-[#66c61c] hover:text-[#66c61c]
                   sm:h-11 sm:w-11
                 "

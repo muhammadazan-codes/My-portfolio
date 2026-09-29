@@ -1,13 +1,45 @@
+
 import { motion } from "framer-motion";
+import emailjs from "@emailjs/browser";
+import { useRef, useState } from "react";
 
 const Contact = () => {
+  const form = useRef();
+
+  const [status, setStatus] = useState("");
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    setStatus("Sending...");
+
+    emailjs
+      .sendForm(
+        "service_8ow52ll",
+        "template_4lyn5wi",
+        form.current,
+        {
+          publicKey: "XULUAfyThf7jw31at",
+        }
+      )
+      .then(
+        () => {
+          setStatus("Message sent successfully! ✓");
+          form.current.reset();
+        },
+        () => {
+          setStatus("Something went wrong. Please try again.");
+        }
+      );
+  };
+
   return (
     <section
       id="contact"
-      className="relative z-10 min-h-screen bg-transparent px-5 py-20 text-white 
-        sm:px-8 sm:py-24 
-        md:px-10 md:py-28 
-        lg:px-24 lg:py-24 
+      className="relative z-10 min-h-screen bg-transparent px-5 py-20 text-white
+        sm:px-8 sm:py-24
+        md:px-10 md:py-28
+        lg:px-24 lg:py-24
       "
     >
       <div className="mx-auto max-w-7xl">
@@ -23,18 +55,18 @@ const Contact = () => {
           }}
         >
           <p
-            className="mb-3 text-xs tracking-[4px] text-[#66c61c] 
-              sm:mb-4 sm:text-sm sm:tracking-[5px] 
+            className="mb-3 text-xs tracking-[4px] text-[#66c61c]
+              sm:mb-4 sm:text-sm sm:tracking-[5px]
             "
           >
             CONTACT
           </p>
 
           <h2
-            className="max-w-4xl text-3xl font-bold leading-tight 
-              sm:text-4xl 
-              md:text-5xl 
-              lg:text-6xl 
+            className="max-w-4xl text-3xl font-bold leading-tight
+              sm:text-4xl
+              md:text-5xl
+              lg:text-6xl
             "
           >
             Let's build something
@@ -44,10 +76,10 @@ const Contact = () => {
 
 
         <div
-          className="mt-12 grid gap-12 
-            sm:mt-14 sm:gap-14 
-            md:mt-20 md:grid-cols-2 md:gap-12 
-            lg:gap-20 
+          className="mt-12 grid gap-12
+            sm:mt-14 sm:gap-14
+            md:mt-20 md:grid-cols-2 md:gap-12
+            lg:gap-20
           "
         >
 
@@ -63,19 +95,19 @@ const Contact = () => {
           >
 
             <p
-              className="max-w-lg text-sm leading-7 text-gray-500 
-                sm:text-base sm:leading-8 
+              className="max-w-lg text-sm leading-7 text-gray-500
+                sm:text-base sm:leading-8
               "
             >
-              Have a project in mind or want to work together? 
-              Feel free to reach out. I would love to hear about 
-              your idea. 
+              Have a project in mind or want to work together?
+              Feel free to reach out. I would love to hear about
+              your idea.
             </p>
 
 
             <div
-              className="mt-8 space-y-5 
-                sm:mt-10 sm:space-y-6 
+              className="mt-8 space-y-5
+                sm:mt-10 sm:space-y-6
               "
             >
 
@@ -86,11 +118,11 @@ const Contact = () => {
                 </p>
 
                 <p
-                  className="mt-2 text-base 
-                    sm:text-lg 
+                  className="mt-2 text-base
+                    sm:text-lg
                   "
                 >
-                  your@email.com
+                 muhammadazan.web@gmail.com
                 </p>
 
               </div>
@@ -103,8 +135,8 @@ const Contact = () => {
                 </p>
 
                 <p
-                  className="mt-2 text-base 
-                    sm:text-lg 
+                  className="mt-2 text-base
+                    sm:text-lg
                   "
                 >
                   Pakistan
@@ -119,6 +151,8 @@ const Contact = () => {
 
           {/* Right Side */}
           <motion.form
+            ref={form}
+            onSubmit={sendEmail}
             className="space-y-5 sm:space-y-6"
             initial={{ opacity: 0, x: 35 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -132,36 +166,49 @@ const Contact = () => {
 
             <input
               type="text"
+              name="name"
               placeholder="Your Name"
-              className="w-full border-b border-zinc-700 bg-transparent px-2 py-3 text-sm outline-none transition placeholder:text-gray-600 focus:border-[#66c61c] 
-                sm:py-4 sm:text-base 
+              required
+              className="w-full border-b border-zinc-700 bg-transparent px-2 py-3 text-sm outline-none transition placeholder:text-gray-600 focus:border-[#66c61c]
+                sm:py-4 sm:text-base
               "
             />
 
             <input
               type="email"
+              name="email"
               placeholder="Your Email"
-              className="w-full border-b border-zinc-700 bg-transparent px-2 py-3 text-sm outline-none transition placeholder:text-gray-600 focus:border-[#66c61c] 
-                sm:py-4 sm:text-base 
+              required
+              className="w-full border-b border-zinc-700 bg-transparent px-2 py-3 text-sm outline-none transition placeholder:text-gray-600 focus:border-[#66c61c]
+                sm:py-4 sm:text-base
               "
             />
 
             <textarea
+              name="message"
               rows="5"
               placeholder="Your Message"
-              className="w-full resize-none border-b border-zinc-700 bg-transparent px-2 py-3 text-sm outline-none transition placeholder:text-gray-600 focus:border-[#66c61c] 
-                sm:py-4 sm:text-base 
+              required
+              className="w-full resize-none border-b border-zinc-700 bg-transparent px-2 py-3 text-sm outline-none transition placeholder:text-gray-600 focus:border-[#66c61c]
+                sm:py-4 sm:text-base
               "
             />
 
             <button
               type="submit"
-              className="rounded-full bg-[#66c61c] px-6 py-3 text-sm font-medium text-black transition active:scale-95 
-                sm:px-7 sm:text-base 
+              disabled={status === "Sending..."}
+              className="rounded-full bg-[#66c61c] px-6 py-3 text-sm font-medium text-black transition active:scale-95 disabled:cursor-not-allowed disabled:opacity-60
+                sm:px-7 sm:text-base
               "
             >
-              Send Message
+              {status === "Sending..." ? "Sending..." : "Send Message"}
             </button>
+
+            {status && (
+              <p className="text-sm text-gray-400">
+                {status}
+              </p>
+            )}
 
           </motion.form>
 
@@ -172,3 +219,4 @@ const Contact = () => {
 };
 
 export default Contact;
+

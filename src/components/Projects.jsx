@@ -119,20 +119,18 @@ const Projects = () => {
 
               {/* Project Image */}
               <div
-                className="w-full overflow-hidden  rounded-xl border border-zinc-800 bg-black
-                  md:w-[48%] md:shrink-0
-                "
-              >
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="h-56 w-full object-fit transition duration-500 group-hover:scale-105
-                    sm:h-64
-                    md:h-72
-                    lg:h-80
-                  "
-                />
-              </div>
+               className="w-full overflow-hidden rounded-xl border border-zinc-800 bg-black
+               md:w-[48%] md:shrink-0
+               "
+>
+  <div className="flex aspect-video w-full items-center justify-center bg-zinc-900">
+    <img
+      src={project.image}
+      alt={project.title}
+      className="h-full w-full object-contain transition duration-500 group-hover:scale-[1.02]"
+    />
+  </div>
+</div>
 
               {/* Content */}
               <div className="flex-1">

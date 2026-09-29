@@ -1,5 +1,5 @@
 
-import { motion } from "framer-motion";
+import { motion,AnimatePresence } from "framer-motion";
 import { useState } from "react";
 
 const services = [
@@ -116,16 +116,31 @@ const Services = () => {
             </p>
 
             {/* Read More Button */}
-            <button
-              onClick={() =>
-                setOpenService(
-                  openService === service.number ? null : service.number
-                )
-              }
-              className="mt-4 text-sm font-medium text-[#66c61c] transition hover:text-white"
-            >
-              {openService === service.number ? "Read Less ←" : "Read More →"}
-            </button>
+           <button
+  onClick={() =>
+    setOpenService(
+      openService === service.number ? null : service.number
+    )
+  }
+  className="mt-4 text-sm font-medium text-[#66c61c] transition hover:text-white"
+>
+  {openService === service.number ? "Read Less ←" : "Read More →"}
+</button>
+<AnimatePresence initial={false}>
+  {openService === service.number && (
+    <motion.div
+      initial={{ opacity: 0, height: 0 }}
+      animate={{ opacity: 1, height: "auto" }}
+      exit={{ opacity: 0, height: 0 }}
+      transition={{ duration: 0.35, ease: "easeInOut" }}
+      className="overflow-hidden"
+    >
+      <p className="pt-4 text-sm leading-6 text-gray-400">
+        {/* yahan aapka existing extra content */}
+      </p>
+    </motion.div>
+  )}
+</AnimatePresence>
 
             <span
               className="absolute bottom-5 right-5 text-xl text-[#66c61c]  

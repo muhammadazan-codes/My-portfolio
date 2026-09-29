@@ -1,6 +1,6 @@
 import Navbar from "./Navbar";
 
-import { FaGithub, FaFacebook, FaInstagram } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
 
 import { motion } from "framer-motion";
 
@@ -91,18 +91,34 @@ const Hero = () => {
               }}
             >
 
-              <img
-                src="/image1.jpeg"
-                alt="M. Azan"
-                loading="eager"
-                fetchPriority="high"
-                className="
-                  h-full w-full
-                  rounded-full
-                  object-cover
-                
-                "
-              />
+ 
+<div className="relative h-full w-full">
+  <img
+    src="/image1.jpeg"
+    alt="M. Azan"
+    loading="eager"
+    fetchPriority="high"
+    className="
+      h-full w-full
+      rounded-full
+      object-cover
+    "
+  />
+
+  {/* Radial dark effect */}
+  <div
+    className="
+      pointer-events-none
+      absolute inset-0
+      rounded-full
+      bg-[radial-gradient(circle,transparent_45%,rgba(0,0,0,0.45)_100%)]
+    "
+  />
+</div>
+
+
+
+
 
             </motion.div>
 
@@ -140,9 +156,21 @@ const Hero = () => {
             </span>
           </h1>
 
-          <p className="mx-auto mt-4 max-w-xl text-sm leading-7 text-gray-400 sm:mt-5 sm:text-base md:mt-6 md:text-lg md:leading-8 lg:mx-0">
-            I'm a Software Engineering student at the University of Malakand <br /> and a passionate Frontend Developer. I build modern, responsive,<br /> and interactive web experiences using React and modern frontend technologies.
-          </p>
+        
+<p
+  className="mx-auto mt-4 max-w-md text-sm leading-7 text-gray-400
+    sm:mt-5 sm:max-w-xl sm:text-base
+    md:mt-6 md:max-w-2xl md:text-lg md:leading-8
+    lg:mx-0 lg:max-w-xl
+  "
+>
+  I'm a Software Engineering student at the University of Malakand
+  and a passionate Frontend Developer. I build modern, responsive,
+  and interactive web experiences using React and modern frontend
+  technologies.
+</p>
+
+
 
 
           {/* Buttons */}
@@ -170,21 +198,44 @@ const Hero = () => {
 
 
             {/* Social Icons */}
-            <div className="flex gap-2.5 sm:gap-3">
+          
+<div className="flex gap-2.5 sm:gap-3">
 
-              <button className="flex h-11 w-11 items-center justify-center rounded-full border-2 border-[#66c61c] text-[#66c61c] sm:h-12 sm:w-12">
-                <FaGithub size={20} />
-              </button>
+  {/* GitHub */}
+  <a
+    href="https://github.com/muhammadazan-codes/My-portfolio"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="GitHub"
+    className="flex h-11 w-11 items-center justify-center rounded-full border-2 border-[#66c61c] text-[#66c61c] transition-all duration-300 hover:bg-[#66c61c] hover:text-black active:scale-95 sm:h-12 sm:w-12"
+  >
+    <FaGithub size={20} />
+  </a>
 
-              <button className="flex h-11 w-11 items-center justify-center rounded-full border-2 border-[#66c61c] text-[#66c61c] sm:h-12 sm:w-12">
-                <FaFacebook size={20} />
-              </button>
+  {/* LinkedIn */}
+ <a
+  href="https://www.linkedin.com/in/muhammad-azan-3a287043b"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="LinkedIn"
+  className="flex h-11 w-11 items-center justify-center rounded-full border-2 border-[#66c61c] text-[#66c61c] transition-all duration-300 hover:bg-[#66c61c] hover:text-black active:scale-95 sm:h-12 sm:w-12"
+>
+  <FaLinkedin size={20} />
+</a>
+  {/* Instagram */}
+  <a
+    href="https://www.instagram.com/muhammadazan.web/"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Instagram"
+    className="flex h-11 w-11 items-center justify-center rounded-full border-2 border-[#66c61c] text-[#66c61c] transition-all duration-300 hover:bg-[#66c61c] hover:text-black active:scale-95 sm:h-12 sm:w-12"
+  >
+    <FaInstagram size={20} />
+  </a>
 
-              <button className="flex h-11 w-11 items-center justify-center rounded-full border-2 border-[#66c61c] text-[#66c61c] sm:h-12 sm:w-12">
-                <FaInstagram size={20} />
-              </button>
+</div>
 
-            </div>
+
 
           </motion.div>
 
