@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
 import { useRef, useState } from "react";
@@ -14,14 +13,9 @@ const Contact = () => {
     setStatus("Sending...");
 
     emailjs
-      .sendForm(
-        "service_8ow52ll",
-        "template_4lyn5wi",
-        form.current,
-        {
-          publicKey: "XULUAfyThf7jw31at",
-        }
-      )
+      .sendForm("service_8ow52ll", "template_4lyn5wi", form.current, {
+        publicKey: "XULUAfyThf7jw31at",
+      })
       .then(
         () => {
           setStatus("Message sent successfully! ✓");
@@ -29,7 +23,7 @@ const Contact = () => {
         },
         () => {
           setStatus("Something went wrong. Please try again.");
-        }
+        },
       );
   };
 
@@ -43,7 +37,6 @@ const Contact = () => {
       "
     >
       <div className="mx-auto max-w-7xl">
-
         {/* Heading */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -74,7 +67,6 @@ const Contact = () => {
           </h2>
         </motion.div>
 
-
         <div
           className="mt-12 grid gap-12
             sm:mt-14 sm:gap-14
@@ -82,7 +74,6 @@ const Contact = () => {
             lg:gap-20
           "
         >
-
           {/* Left Side */}
           <motion.div
             initial={{ opacity: 0, x: -35 }}
@@ -93,46 +84,34 @@ const Contact = () => {
               ease: [0.22, 1, 0.36, 1],
             }}
           >
-
             <p
               className="max-w-lg text-sm leading-7 text-gray-500
                 sm:text-base sm:leading-8
               "
             >
-              Have a project in mind or want to work together?
-              Feel free to reach out. I would love to hear about
-              your idea.
+              Have a project in mind or want to work together? Feel free to
+              reach out. I would love to hear about your idea.
             </p>
-
 
             <div
               className="mt-8 space-y-5
                 sm:mt-10 sm:space-y-6
               "
             >
-
               <div>
-
-                <p className="text-xs text-gray-500 sm:text-sm">
-                  EMAIL
-                </p>
+                <p className="text-xs text-gray-500 sm:text-sm">EMAIL</p>
 
                 <p
                   className="mt-2 text-base
                     sm:text-lg
                   "
                 >
-                 muhammadazan.web@gmail.com
+                  muhammadazan.web@gmail.com
                 </p>
-
               </div>
 
-
               <div>
-
-                <p className="text-xs text-gray-500 sm:text-sm">
-                  LOCATION
-                </p>
+                <p className="text-xs text-gray-500 sm:text-sm">LOCATION</p>
 
                 <p
                   className="mt-2 text-base
@@ -141,13 +120,9 @@ const Contact = () => {
                 >
                   Pakistan
                 </p>
-
               </div>
-
             </div>
-
           </motion.div>
-
 
           {/* Right Side */}
           <motion.form
@@ -163,7 +138,6 @@ const Contact = () => {
               ease: [0.22, 1, 0.36, 1],
             }}
           >
-
             <input
               type="text"
               name="name"
@@ -204,14 +178,8 @@ const Contact = () => {
               {status === "Sending..." ? "Sending..." : "Send Message"}
             </button>
 
-            {status && (
-              <p className="text-sm text-gray-400">
-                {status}
-              </p>
-            )}
-
+            {status && <p className="text-sm text-gray-400">{status}</p>}
           </motion.form>
-
         </div>
       </div>
     </section>
@@ -219,4 +187,3 @@ const Contact = () => {
 };
 
 export default Contact;
-

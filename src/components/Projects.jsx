@@ -1,4 +1,3 @@
-
 import { easeOut, motion } from "framer-motion";
 
 const projects = [
@@ -44,7 +43,7 @@ const Projects = () => {
       <motion.div
         initial={{ opacity: 0, y: 25 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.3 }}
+        viewport={{ once: true, amount: 0.05 }}
         transition={{ duration: 0.5, ease: easeOut }}
         className="mx-auto max-w-7xl"
       >
@@ -119,18 +118,18 @@ const Projects = () => {
 
               {/* Project Image */}
               <div
-               className="w-full overflow-hidden rounded-xl border border-zinc-800 bg-black
+                className="w-full overflow-hidden rounded-xl border border-zinc-800 bg-black
                md:w-[48%] md:shrink-0
                "
->
-  <div className="flex aspect-video w-full items-center justify-center bg-zinc-900">
-    <img
-      src={project.image}
-      alt={project.title}
-      className="h-full w-full object-contain transition duration-500 group-hover:scale-[1.02]"
-    />
-  </div>
-</div>
+              >
+                <div className="flex aspect-video w-full items-center justify-center bg-zinc-900">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="h-full w-full object-contain transition duration-500 group-hover:scale-[1.02]"
+                  />
+                </div>
+              </div>
 
               {/* Content */}
               <div className="flex-1">
@@ -194,4 +193,3 @@ const Projects = () => {
 };
 
 export default Projects;
-

@@ -19,28 +19,28 @@ const Navbar = () => {
 
         sm:px-6 sm:py-2
 
-        md:fixed md:left-0 md:top-0
+        lg:fixed 
         md:px-8 md:py-2
 
         lg:px-10
       "
     >
       {/* Logo */}
-    <a href="#hero">
-  <motion.img
-    src="/logo.png"
-    alt="M. Azan Logo"
-    className="
+      <a href="#hero">
+        <motion.img
+          src="/logo.png"
+          alt="M. Azan Logo"
+          className="
       h-16 w-16 object-contain
       sm:h-18 sm:w-18
       md:h-20 md:w-20
       md:-ml-6
       cursor-pointer
     "
-    whileHover={{ scale: 1.05 }}
-    transition={{ duration: 0.2 }}
-  />
-</a>
+          whileHover={{ scale: 1.05 }}
+          transition={{ duration: 0.2 }}
+        />
+      </a>
 
       {/* Menu */}
       <div className="relative">

@@ -10,9 +10,7 @@ const Footer = () => {
         lg:px-24
       "
     >
-
       <div className="mx-auto max-w-7xl">
-
         {/* Top */}
         <div
           className="flex flex-col justify-between gap-10
@@ -20,10 +18,8 @@ const Footer = () => {
             lg:flex-row lg:gap-10
           "
         >
-
           {/* Brand */}
           <div className="max-w-md">
-
             <img
               src="/logo.png"
               alt="M. Azan"
@@ -46,16 +42,13 @@ const Footer = () => {
                 sm:mt-4 sm:text-base
               "
             >
-              I'm a frontend developer focused on building modern,
-              responsive and interactive web experiences.
+              I'm a frontend developer focused on building modern, responsive
+              and interactive web experiences.
             </p>
-
           </div>
-
 
           {/* Navigation */}
           <div>
-
             <p
               className="mb-4 text-xs tracking-[3px] text-[#66c61c]
                 sm:mb-5 sm:text-sm sm:tracking-[4px]
@@ -65,50 +58,30 @@ const Footer = () => {
             </p>
 
             <div className="flex flex-col gap-2.5 text-sm text-gray-400 sm:gap-3 sm:text-base">
-
-              <a
-                href="#home"
-                className="transition hover:text-[#66c61c]"
-              >
+              <a href="#hero" className="transition hover:text-[#66c61c]">
                 Home
               </a>
 
-              <a
-                href="#about"
-                className="transition hover:text-[#66c61c]"
-              >
+              <a href="#about" className="transition hover:text-[#66c61c]">
                 About
               </a>
 
-              <a
-                href="#services"
-                className="transition hover:text-[#66c61c]"
-              >
+              <a href="#services" className="transition hover:text-[#66c61c]">
                 Services
               </a>
 
-              <a
-                href="#projects"
-                className="transition hover:text-[#66c61c]"
-              >
+              <a href="#projects" className="transition hover:text-[#66c61c]">
                 Projects
               </a>
 
-              <a
-                href="#contact"
-                className="transition hover:text-[#66c61c]"
-              >
+              <a href="#contact" className="transition hover:text-[#66c61c]">
                 Contact
               </a>
-
             </div>
-
           </div>
-
 
           {/* Social */}
           <div>
-
             <p
               className="mb-4 text-xs tracking-[3px] text-[#66c61c]
                 sm:mb-5 sm:text-sm sm:tracking-[4px]
@@ -118,40 +91,44 @@ const Footer = () => {
             </p>
 
             <div className="flex gap-2.5 sm:gap-3">
-
               <a
                 href="https://github.com/muhammadazan-codes/My-portfolio"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
                 className="flex h-10 w-10 items-center justify-center rounded-full border border-zinc-700 transition hover:border-[#66c61c] hover:text-[#66c61c]
-                  sm:h-11 sm:w-11
-                "
+    sm:h-11 sm:w-11
+  "
               >
                 <FaGithub size={18} />
               </a>
 
               <a
                 href="https://www.linkedin.com/in/muhammad-azan-3a287043b"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
                 className="flex h-10 w-10 items-center justify-center rounded-full border border-zinc-700 transition hover:border-[#66c61c] hover:text-[#66c61c]
-                  sm:h-11 sm:w-11
-                "
+    sm:h-11 sm:w-11
+  "
               >
                 <FaLinkedin size={18} />
               </a>
 
               <a
                 href="https://www.instagram.com/muhammadazan.web/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
                 className="flex h-10 w-10 items-center justify-center rounded-full border border-zinc-700 transition hover:border-[#66c61c] hover:text-[#66c61c]
-                  sm:h-11 sm:w-11
-                "
+    sm:h-11 sm:w-11
+  "
               >
                 <FaInstagram size={18} />
               </a>
-
             </div>
-
           </div>
-
         </div>
-
 
         {/* Bottom */}
         <div
@@ -160,21 +137,16 @@ const Footer = () => {
             md:flex-row md:items-center
           "
         >
-
-          <p>
-            © 2026 M. Azan. All rights reserved.
-          </p>
+          <p>© 2026 M. Azan. All rights reserved.</p>
 
           <a
-            href="#home"
+            href="#hero"
             className="flex items-center gap-2 transition hover:text-[#66c61c]"
           >
             Back to top
             <ArrowUpRight size={16} />
           </a>
-
         </div>
-
       </div>
     </footer>
   );

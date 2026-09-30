@@ -40,9 +40,7 @@ const Loader = ({ onComplete }) => {
         />
       </div>
 
-      <p className="mt-4 text-xs tracking-[4px] text-gray-500">
-        LOADING
-      </p>
+      <p className="mt-4 text-xs tracking-[4px] text-gray-500">LOADING</p>
     </motion.div>
   );
 };

@@ -4,31 +4,81 @@ import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
 
 import { motion } from "framer-motion";
 
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+
 const stats = [
   {
-    number: "01",
+    number: 1,
+    suffix: "",
     title: "Portfolio",
   },
   {
-    number: "06",
+    number: 6,
+    suffix: "",
     title: "Projects Built",
   },
   {
-    number: "08+",
+    number: 8,
+    suffix: "+",
     title: "Core Skills",
   },
   {
-    number: "02",
+    number: 2,
+    suffix: "",
     title: "Live Project",
   },
 ];
 
 const Hero = () => {
-  return (
-    <div 
-    id="hero"
-    className="relative min-h-screen w-full overflow-hidden bg-transparent text-white">
+  const nameRef = useRef(null);
+  const statRefs = useRef([]);
 
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // M. Azan typing animation
+      const name = "M.Azan";
+      const nameAnimation = { progress: 0 };
+
+      gsap.to(nameAnimation, {
+        progress: 1,
+        duration: 1.2,
+        delay: 0.8,
+        ease: "none",
+        onUpdate: () => {
+          const letters = Math.ceil(nameAnimation.progress * name.length);
+          nameRef.current.textContent = name.slice(0, letters);
+        },
+      });
+
+      // Stats counter animation
+      statRefs.current.forEach((element, index) => {
+        const target = stats[index].number;
+        const counter = { value: 0 };
+
+        gsap.to(counter, {
+          value: target,
+          duration: 1.5,
+          delay: 0.8,
+          ease: "power2.out",
+          snap: { value: 1 },
+          onUpdate: () => {
+            element.textContent =
+              String(Math.round(counter.value)).padStart(2, "0") +
+              stats[index].suffix;
+          },
+        });
+      });
+    });
+
+    return () => ctx.revert();
+  }, []);
+
+  return (
+    <div
+      id="hero"
+      className="relative min-h-screen w-full overflow-hidden bg-transparent text-white"
+    >
       <Navbar />
 
       {/* Hero Content */}
@@ -46,7 +96,6 @@ const Hero = () => {
           lg:mt-[-65px]
         "
       >
-
         {/* Right Side / Image */}
         <motion.div
           className="order-1 flex shrink-0 justify-center lg:order-2"
@@ -65,9 +114,7 @@ const Hero = () => {
             ease: "easeOut",
           }}
         >
-
           <div className="relative">
-
             {/* Green Glow */}
             <div className="absolute inset-0 rounded-full bg-[#66c61c] blur-3xl opacity-40"></div>
 
@@ -90,42 +137,32 @@ const Hero = () => {
                 duration: 0.3,
               }}
             >
-
- 
-<div className="relative h-full w-full">
-  <img
-    src="/image1.jpeg"
-    alt="M. Azan"
-    loading="eager"
-    fetchPriority="high"
-    className="
+              <div className="relative h-full w-full">
+                <img
+                  src="/image1.jpeg"
+                  alt="M. Azan"
+                  loading="eager"
+                  fetchPriority="high"
+                  className="
       h-full w-full
       rounded-full
       object-cover
     "
-  />
+                />
 
-  {/* Radial dark effect */}
-  <div
-    className="
+                {/* Radial dark effect */}
+                <div
+                  className="
       pointer-events-none
       absolute inset-0
       rounded-full
       bg-[radial-gradient(circle,transparent_45%,rgba(0,0,0,0.45)_100%)]
     "
-  />
-</div>
-
-
-
-
-
+                />
+              </div>
             </motion.div>
-
           </div>
-
         </motion.div>
-
 
         {/* Left Side */}
         <motion.div
@@ -143,35 +180,33 @@ const Hero = () => {
             ease: "easeOut",
           }}
         >
-
           <p className="mb-3 text-sm tracking-widest text-gray-400 sm:mb-4 md:mb-5">
             FRONTEND DEVELOPER & SOFTWARE ENGINEERING STUDENT
           </p>
 
           <h1 className="text-3xl font-bold leading-tight sm:text-4xl md:text-5xl">
             Hello, I'm
-
-            <span className="ml-2 text-[#66c61c] sm:ml-3 md:ml-4">
-              M.Azan
+            <span
+              ref={nameRef}
+              className="ml-2 inline-block text-[#66c61c] sm:ml-3 md:ml-4"
+            ></span>
+            <span className="ml-1 inline-block animate-pulse text-[#66c61c]">
+              |
             </span>
           </h1>
 
-        
-<p
-  className="mx-auto mt-4 max-w-md text-sm leading-7 text-gray-400
+          <p
+            className="mx-auto mt-4 max-w-md text-sm leading-7 text-gray-400
     sm:mt-5 sm:max-w-xl sm:text-base
     md:mt-6 md:max-w-2xl md:text-lg md:leading-8
     lg:mx-0 lg:max-w-xl
   "
->
-  I'm a Software Engineering student at the University of Malakand
-  and a passionate Frontend Developer. I build modern, responsive,
-  and interactive web experiences using React and modern frontend
-  technologies.
-</p>
-
-
-
+          >
+            I'm a Software Engineering student at the University of Malakand and
+            a passionate Frontend Developer. I build modern, responsive, and
+            interactive web experiences using React and modern frontend
+            technologies.
+          </p>
 
           {/* Buttons */}
           <motion.div
@@ -190,59 +225,52 @@ const Hero = () => {
               ease: "easeOut",
             }}
           >
-
             {/* Hire Me */}
-            <button className="rounded-full border-2 border-[#66c61c] px-6 py-2.5 text-base text-[#66c61c] transition hover:bg-[#66c61c] hover:text-black sm:px-7 sm:py-3 sm:text-lg">
+            <a
+              href="#contact"
+              className="rounded-full border-2 active:scale-95 border-[#66c61c] px-6 py-2.5 text-base text-[#66c61c] transition hover:bg-[#66c61c] hover:text-black sm:px-7 sm:py-3 sm:text-lg"
+            >
               Hire Me
-            </button>
-
+            </a>
 
             {/* Social Icons */}
-          
-<div className="flex gap-2.5 sm:gap-3">
 
-  {/* GitHub */}
-  <a
-    href="https://github.com/muhammadazan-codes/My-portfolio"
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="GitHub"
-    className="flex h-11 w-11 items-center justify-center rounded-full border-2 border-[#66c61c] text-[#66c61c] transition-all duration-300 hover:bg-[#66c61c] hover:text-black active:scale-95 sm:h-12 sm:w-12"
-  >
-    <FaGithub size={20} />
-  </a>
+            <div className="flex gap-2.5 sm:gap-3">
+              {/* GitHub */}
+              <a
+                href="https://github.com/muhammadazan-codes/My-portfolio"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
+                className="flex h-11 w-11 items-center justify-center rounded-full border-2 border-[#66c61c] text-[#66c61c] transition-all duration-300 hover:bg-[#66c61c] hover:text-black active:scale-95 sm:h-12 sm:w-12"
+              >
+                <FaGithub size={20} />
+              </a>
 
-  {/* LinkedIn */}
- <a
-  href="https://www.linkedin.com/in/muhammad-azan-3a287043b"
-  target="_blank"
-  rel="noopener noreferrer"
-  aria-label="LinkedIn"
-  className="flex h-11 w-11 items-center justify-center rounded-full border-2 border-[#66c61c] text-[#66c61c] transition-all duration-300 hover:bg-[#66c61c] hover:text-black active:scale-95 sm:h-12 sm:w-12"
->
-  <FaLinkedin size={20} />
-</a>
-  {/* Instagram */}
-  <a
-    href="https://www.instagram.com/muhammadazan.web/"
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="Instagram"
-    className="flex h-11 w-11 items-center justify-center rounded-full border-2 border-[#66c61c] text-[#66c61c] transition-all duration-300 hover:bg-[#66c61c] hover:text-black active:scale-95 sm:h-12 sm:w-12"
-  >
-    <FaInstagram size={20} />
-  </a>
-
-</div>
-
-
-
+              {/* LinkedIn */}
+              <a
+                href="https://www.linkedin.com/in/muhammad-azan-3a287043b"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                className="flex h-11 w-11 items-center justify-center rounded-full border-2 border-[#66c61c] text-[#66c61c] transition-all duration-300 hover:bg-[#66c61c] hover:text-black active:scale-95 sm:h-12 sm:w-12"
+              >
+                <FaLinkedin size={20} />
+              </a>
+              {/* Instagram */}
+              <a
+                href="https://www.instagram.com/muhammadazan.web/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                className="flex h-11 w-11 items-center justify-center rounded-full border-2 border-[#66c61c] text-[#66c61c] transition-all duration-300 hover:bg-[#66c61c] hover:text-black active:scale-95 sm:h-12 sm:w-12"
+              >
+                <FaInstagram size={20} />
+              </a>
+            </div>
           </motion.div>
-
         </motion.div>
-
       </div>
-
 
       {/* Stats */}
       <motion.div
@@ -270,25 +298,23 @@ const Hero = () => {
           ease: "easeOut",
         }}
       >
-
         {stats.map((stat, index) => (
-
           <div className="text-center" key={index}>
-
-            <h1 className="text-2xl font-bold text-[#66c61c] sm:text-3xl">
-              {stat.number}
+            <h1
+              ref={(element) => {
+                statRefs.current[index] = element;
+              }}
+              className="text-2xl font-bold text-[#66c61c] sm:text-3xl"
+            >
+              00{stat.suffix}
             </h1>
 
             <p className="mt-2 text-sm text-gray-400 sm:mt-3 md:mt-4">
               {stat.title}
             </p>
-
           </div>
-
         ))}
-
       </motion.div>
-
     </div>
   );
 };

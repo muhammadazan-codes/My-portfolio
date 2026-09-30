@@ -43,7 +43,6 @@ const About = () => {
         lg:px-24 lg:py-24
       "
     >
-
       {/* Heading */}
       <motion.div
         className="mx-auto max-w-7xl"
@@ -64,34 +63,34 @@ const About = () => {
           ease: "easeOut",
         }}
       >
-
-        <p className="mb-3 text-xs tracking-[4px] text-[#66c61c]
+        <p
+          className="mb-3 text-xs tracking-[4px] text-[#66c61c]
           sm:mb-4 sm:text-sm sm:tracking-[5px]
-        ">
+        "
+        >
           ABOUT ME
         </p>
 
-        <h2 className="max-w-4xl text-3xl font-bold leading-tight
+        <h2
+          className="max-w-4xl text-3xl font-bold leading-tight
           sm:text-4xl
           md:text-5xl
           lg:text-6xl
-        ">
+        "
+        >
           I turn ideas into
-          <span className="text-gray-500">
-            {" "}modern experiences.
-          </span>
+          <span className="text-gray-500"> modern experiences.</span>
         </h2>
-
       </motion.div>
 
-
       {/* Main Content */}
-      <div className="mx-auto mt-14 grid max-w-7xl gap-12
+      <div
+        className="mx-auto mt-14 grid max-w-7xl gap-12
         sm:mt-16 sm:gap-14
         md:mt-20 md:grid-cols-2 md:gap-12
         lg:gap-20
-      ">
-
+      "
+      >
         {/* Left */}
         <motion.div
           initial={{
@@ -111,41 +110,48 @@ const About = () => {
             ease: "easeOut",
           }}
         >
-
-          <p className="mb-3 text-xs uppercase tracking-[2px] text-[#66c61c]
+          <p
+            className="mb-3 text-xs uppercase tracking-[2px] text-[#66c61c]
             sm:mb-4 sm:text-sm sm:tracking-[3px]
-          ">
+          "
+          >
             Who I am
           </p>
 
-          <h3 className="text-2xl font-semibold
+          <h3
+            className="text-2xl font-semibold
             sm:text-3xl
-          ">
+          "
+          >
             I'm M. Azan
           </h3>
 
-          <p className="mt-5 max-w-xl text-base leading-7 text-gray-400
+          <p
+            className="mt-5 max-w-xl text-base leading-7 text-gray-400
             sm:mt-6 sm:text-lg sm:leading-8
-          ">
-            I'm a Software Engineering student at the University of
-            Malakand and a passionate Frontend Developer focused on
-            building modern, responsive, and interactive web experiences.
+          "
+          >
+            I'm a Software Engineering student at the University of Malakand and
+            a passionate Frontend Developer focused on building modern,
+            responsive, and interactive web experiences.
           </p>
 
-          <p className="mt-4 max-w-xl text-base leading-7 text-gray-500
+          <p
+            className="mt-4 max-w-xl text-base leading-7 text-gray-500
             sm:mt-5 sm:text-lg sm:leading-8
-          ">
-            I enjoy transforming ideas and designs into clean,
-            user-friendly interfaces using React, JavaScript, Tailwind CSS,
-            and modern frontend technologies.
+          "
+          >
+            I enjoy transforming ideas and designs into clean, user-friendly
+            interfaces using React, JavaScript, Tailwind CSS, and modern
+            frontend technologies.
           </p>
-
 
           {/* Education */}
-          <div className="mt-8 border-l-2 border-[#66c61c] pl-5
+          <div
+            className="mt-8 border-l-2 border-[#66c61c] pl-5
             sm:mt-10
-          ">
-
+          "
+          >
             <p className="text-xs uppercase tracking-[2px] text-[#66c61c]">
               Education
             </p>
@@ -165,11 +171,8 @@ const About = () => {
             <p className="mt-1 text-sm text-gray-500 sm:text-base">
               FG Collage BTK
             </p>
-
           </div>
-
         </motion.div>
-
 
         {/* Right - Skills */}
         <motion.div
@@ -190,23 +193,27 @@ const About = () => {
             ease: "easeOut",
           }}
         >
-
-          <p className="mb-3 text-xs uppercase tracking-[2px] text-[#66c61c]
+          <p
+            className="mb-3 text-xs uppercase tracking-[2px] text-[#66c61c]
             sm:mb-4 sm:text-sm sm:tracking-[3px]
-          ">
+          "
+          >
             My Skills
           </p>
 
-          <h3 className="text-2xl font-semibold
+          <h3
+            className="text-2xl font-semibold
             sm:text-3xl
-          ">
+          "
+          >
             What I work with
           </h3>
 
-          <div className="mt-6 grid grid-cols-2 gap-3
+          <div
+            className="mt-6 grid grid-cols-2 gap-3
             sm:mt-8 sm:gap-4
-          ">
-
+          "
+          >
             {skills.map((skill, index) => (
               <motion.div
                 key={skill}
@@ -231,28 +238,27 @@ const About = () => {
                   ease: "easeOut",
                 }}
               >
-                <span className="text-sm text-gray-300
+                <span
+                  className="text-sm text-gray-300
                   sm:text-base
-                ">
+                "
+                >
                   {skill}
                 </span>
               </motion.div>
             ))}
-
           </div>
-
         </motion.div>
-
       </div>
 
-
       {/* Highlights */}
-      <div className="mx-auto mt-16 grid max-w-7xl gap-5
+      <div
+        className="mx-auto mt-16 grid max-w-7xl gap-5
         sm:mt-20 sm:gap-6
         md:mt-24 md:grid-cols-2
         lg:grid-cols-3
-      ">
-
+      "
+      >
         {highlights.map((item, index) => (
           <motion.div
             key={item.title}
@@ -277,30 +283,31 @@ const About = () => {
               ease: "easeOut",
             }}
           >
-
-            <div className="mb-4 h-1 w-10 rounded-full bg-[#66c61c]
+            <div
+              className="mb-4 h-1 w-10 rounded-full bg-[#66c61c]
               sm:mb-5
-            " />
+            "
+            />
 
-            <h4 className="text-xl font-semibold
+            <h4
+              className="text-xl font-semibold
               sm:text-2xl
-            ">
+            "
+            >
               {item.title}
             </h4>
 
-            <p className="mt-3 text-sm leading-7 text-gray-500
+            <p
+              className="mt-3 text-sm leading-7 text-gray-500
               sm:text-base
-            ">
+            "
+            >
               {item.text}
             </p>
 
             {/* Read More */}
             <button
-              onClick={() =>
-                setActiveCard(
-                  activeCard === index ? null : index
-                )
-              }
+              onClick={() => setActiveCard(activeCard === index ? null : index)}
               className="mt-5 text-sm font-medium text-[#66c61c] transition hover:text-white"
             >
               {activeCard === index ? "Show Less" : "Read More"}
@@ -326,12 +333,9 @@ const About = () => {
                 {item.details}
               </motion.p>
             )}
-
           </motion.div>
         ))}
-
       </div>
-
     </section>
   );
 };
